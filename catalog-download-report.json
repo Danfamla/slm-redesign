@@ -16,5 +16,10 @@
   "images_downloaded_or_present": 137,
   "new_products_added": 115,
   "errors": [],
-  "note": "Цены, не найденные на странице товара, записаны как 0; проверьте их вручную. Скрипт не выдумывает цены."
+  "note": "All product IDs are compared numerically so links like product.html?id=63 resolve correctly. Prices that were generic 3,000 ₽ placeholders and could not be verified are shown as \"Цена по запросу\".",
+  "price_review": {
+    "kitchens": "29 prices updated from the original category page",
+    "unverified_placeholder_prices": 86,
+    "display_rule": "Unverified prices are displayed as \"Цена по запросу\", not as an invented 3,000 ₽"
+  }
 }

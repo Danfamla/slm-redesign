@@ -152,7 +152,8 @@
     return '<a class="cat" href="category.html?c=' + c.slug + '">' + imgTag(c.img, c.name, c.name, false).replace("<img ", "<img data-cat-fb ") + t + "</a>";
   }
   function prodCard(p) {
-    return '<a class="card" href="product.html?id=' + p.id + '"><div class="ph">' + imgTag(p.img, p.name, p.name) + '</div><div class="tx"><h3>' + esc(p.name) + '</h3><span class="price">от ' + money(p.price) + "</span></div></a>";
+    var priceText = Number(p.price) > 0 ? "от " + money(p.price) : "Цена по запросу";
+    return '<a class="card" href="product.html?id=' + p.id + '"><div class="ph">' + imgTag(p.img, p.name, p.name) + '</div><div class="tx"><h3>' + esc(p.name) + '</h3><span class="price">' + priceText + "</span></div></a>";
   }
   function revCard(r, long) {
     return '<figure class="rev' + (long ? " rev--long" : "") + '"><blockquote>' + esc(r.text) + "</blockquote><figcaption><cite>" + esc(r.name) + "</cite><small>" + esc(r.date) + "</small></figcaption></figure>";
@@ -219,29 +220,49 @@
     function draw() {
       var q = $("#q").value.trim().toLowerCase(), s = $("#sort").value;
       var list = items.filter(function (p) { return p.name.toLowerCase().indexOf(q) > -1; });
-      list.sort(function (a, b) { return s === "name" ? a.name.localeCompare(b.name, "ru") : s === "price-desc" ? b.price - a.price : a.price - b.price; });
+      list.sort(function (a, b) {
+        if (s === "name") return a.name.localeCompare(b.name, "ru");
+        var ap = Number(a.price) || 0, bp = Number(b.price) || 0;
+        if (!ap && bp) return 1;
+        if (ap && !bp) return -1;
+        return s === "price-desc" ? bp - ap : ap - bp;
+      });
       $("#count").textContent = "Найдено: " + list.length + " из " + items.length;
       $("#grid").innerHTML = list.length ? list.map(prodCard).join("") : "<p>Ничего не найдено. Попробуйте другое название.</p>";
     }
     $("#q").addEventListener("input", draw); $("#sort").addEventListener("change", draw); draw();
   }
   function initProduct() {
-    var id = Number(new URLSearchParams(location.search).get("id"));
-    var p = P.filter(function (x) { return x.id === id; })[0];
+    var idParam = new URLSearchParams(location.search).get("id");
+    var id = Number(idParam);
+    var p = P.filter(function (x) { return Number(x.id) === id; })[0];
     var root = $("#prod-root");
-    if (!p) { root.innerHTML = '<div class="empty"><h2>Товар не найден</h2><p><a href="catalog.html">Вернуться в каталог</a></p></div>'; return; }
+    if (!p) {
+      document.title = "Товар не найден — СЛМ (демо)";
+      root.innerHTML = '<div class="empty"><h2>Товар не найден в актуальном каталоге</h2>' +
+        '<p>Возможно, ссылка ведёт на старую карточку или товар больше не входит в эту демонстрационную подборку.</p>' +
+        '<div class="btn-row"><a class="btn" href="catalog.html">Открыть весь каталог</a>' +
+        '<a class="btn btn--ghost" href="https://slm24.ru/" rel="noopener">Перейти на исходный сайт</a></div></div>';
+      return;
+    }
     var c = catBySlug[p.cat];
+    var priceText = Number(p.price) > 0 ? "от " + money(p.price) : "Цена по запросу";
     document.title = p.name + " — СЛМ (демо-редизайн)";
-    $("#prod-crumbs").innerHTML = crumbs([["Главная", "index.html"], ["Каталог", "catalog.html"], [c.name, "category.html?c=" + c.slug], [p.name]]);
+    $("#prod-crumbs").innerHTML = crumbs([["Главная", "index.html"], ["Каталог", "catalog.html"], [c ? c.name : "Каталог", c ? "category.html?c=" + c.slug : "catalog.html"], [p.name]]);
     root.innerHTML = '<div class="prod"><button class="prod-img" type="button" data-lb="' + esc(p.img) + '" data-alt="' + esc(p.name) + '" aria-label="Открыть фото крупно">' + imgTag(p.img, p.name, p.name, false) + "</button>" +
-      '<div class="prod-info"><h1 style="font-size:clamp(1.8rem,4.5vw,2.8rem)">' + esc(p.name) + '</h1><span class="price">от ' + money(p.price) + "</span>" +
-      "<p>" + esc(p.desc) + '</p><p class="muted">Описание на исходном сайте обрезано, полные характеристики — на странице товара.</p>' +
+      '<div class="prod-info"><h1 style="font-size:clamp(1.8rem,4.5vw,2.8rem)">' + esc(p.name) + '</h1><span class="price">' + priceText + "</span>" +
+      (p.desc ? "<p>" + esc(p.desc) + "</p>" : '<p class="muted">Описание товара уточняйте у производителя.</p>') +
+      '<p class="muted">Полные характеристики и актуальную стоимость можно уточнить у производителя.</p>' +
       '<div class="btn-row"><button class="btn" type="button" data-callback>Заказать звонок</button><a class="btn btn--ghost" href="tel:' + T1 + '">' + PH1 + '</a></div>' +
-      '<ul class="specs"><li>Раздел: <a href="category.html?c=' + c.slug + '">' + esc(c.name) + '</a></li><li>Цена указана как «от» — как на исходном сайте</li><li><a href="' + p.url + '" rel="noopener">Полное описание на slm24.ru</a></li></ul>' +
-      '<div class="btn-row"><a class="btn btn--ghost" href="category.html?c=' + c.slug + '">← Вернуться в каталог</a><a class="btn btn--ghost" href="' + TG + '" rel="noopener">Написать в Telegram</a></div></div></div>' +
-      '<section class="sec" style="padding-bottom:0"><h2 style="margin-bottom:24px">Ещё в этом разделе</h2><div class="grid" id="rel"></div></section>';
-    var rel = P.filter(function (x) { return x.cat === p.cat && x.id !== p.id; }).sort(function (a, b) { return Math.abs(a.price - p.price) - Math.abs(b.price - p.price); }).slice(0, 4);
-    $("#rel").innerHTML = rel.map(prodCard).join("");
+      '<ul class="specs">' + (c ? '<li>Раздел: <a href="category.html?c=' + c.slug + '">' + esc(c.name) + '</a></li>' : '') +
+      '<li><a href="' + esc(p.url) + '" rel="noopener">Полное описание на slm24.ru</a></li></ul>' +
+      '<div class="btn-row"><a class="btn btn--ghost" href="' + (c ? 'category.html?c=' + c.slug : 'catalog.html') + '">← Вернуться в каталог</a><a class="btn btn--ghost" href="' + TG + '" rel="noopener">Написать в Telegram</a></div></div></div>' +
+      (c ? '<section class="sec" style="padding-bottom:0"><h2 style="margin-bottom:24px">Ещё в этом разделе</h2><div class="grid" id="rel"></div></section>' : '');
+    if (c) {
+      var rel = P.filter(function (x) { return x.cat === p.cat && x.id !== p.id; })
+        .sort(function (a, b) { return Math.abs((Number(a.price) || 0) - (Number(p.price) || 0)) - Math.abs((Number(b.price) || 0) - (Number(p.price) || 0)); }).slice(0, 4);
+      $("#rel").innerHTML = rel.map(prodCard).join("");
+    }
   }
   function initReviews() { $("#rev-list").innerHTML = R.map(function (r) { return revCard(r, true); }).join(""); }
   function initContacts() { var f = $("#c-form"); if (f) bindForm(f, "Вопрос с сайта"); }
