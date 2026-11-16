@@ -24,14 +24,14 @@
       '<a class="logo" href="index.html" aria-label="СЛМ — Самая Лучшая Мебель, на главную"><img src="images/brand/logo.png" alt="СЛМ — самая лучшая мебель" width="190" height="38"></a>' +
       '<nav class="nav" aria-label="Основная навигация">' +
       '<div class="dd"><button type="button" aria-haspopup="true">Каталог</button><div class="dd-menu">' + catLinks() + '<a href="catalog.html"><b>Весь каталог</b></a></div></div>' +
-      '<a href="index.html#works">Работы</a><a href="reviews.html">Отзывы</a><a href="index.html#promo">Акции</a><div class="dd"><button type="button" aria-haspopup="true">О компании</button><div class="dd-menu">' +
+      '<a href="works.html">Работы</a><a href="reviews.html">Отзывы</a><a href="promotions.html">Акции</a><div class="dd"><button type="button" aria-haspopup="true">О компании</button><div class="dd-menu">' +
       [['about.html','О компании'],['team.html','Наши сотрудники'],['certificates.html','Сертификаты'],['vacancy.html','Вакансии'],['cooperation.html','Сотрудничество'],['delivery.html','Доставка и сборка'],['payment.html','Оплата и рассрочка'],['services.html','Услуги'],['guarantees.html','Гарантии']].map(function(l){return '<a href="'+l[0]+'">'+l[1]+'</a>';}).join('') +
       '</div></div><a href="contacts.html">Контакты</a></nav>' +
       '<a class="head-tel" href="tel:' + T1 + '">' + PH1 + "</a>" +
       '<button class="burger" type="button" aria-label="Открыть меню" aria-expanded="false"><span></span></button>' +
       "</div></header>" +
       '<div class="drawer" id="drawer"><a href="catalog.html">Каталог</a><div class="sub">' + catLinks() + "</div>" +
-      '<h4>Разделы</h4><a href="index.html#works">Работы</a><a href="reviews.html">Отзывы</a><a href="index.html#promo">Акции</a><a href="contacts.html">Контакты</a><h4>О компании</h4>' +
+      '<h4>Разделы</h4><a href="works.html">Работы</a><a href="reviews.html">Отзывы</a><a href="promotions.html">Акции</a><a href="contacts.html">Контакты</a><h4>О компании</h4>' +
       [['about.html','О компании'],['team.html','Наши сотрудники'],['certificates.html','Сертификаты'],['vacancy.html','Вакансии'],['cooperation.html','Сотрудничество'],['delivery.html','Доставка и сборка'],['payment.html','Оплата и рассрочка'],['services.html','Услуги'],['guarantees.html','Гарантии']].map(function(l){return '<a href="'+l[0]+'">'+l[1]+'</a>';}).join('') +
       '<a href="tel:' + T1 + '">' + PH1 + '</a><a href="tel:' + T2 + '">' + PH2 + '</a>' +
       '<button class="btn" type="button" data-quiz>Узнать стоимость кухни</button></div>';
@@ -39,7 +39,7 @@
       '<div><span class="logo-f"><img src="images/brand/logo.png" alt="СЛМ" width="160" height="34"></span><p>Мебель на заказ в Красноярске по индивидуальным размерам от производителя.</p></div>' +
       "<div><h4>Каталог</h4><ul>" + C.slice(0, 6).map(function (c) { return '<li><a href="category.html?c=' + c.slug + '">' + esc(c.menu) + "</a></li>"; }).join("") + '<li><a href="catalog.html">Все категории</a></li></ul></div>' +
       '<div><h4>Ещё на slm24.ru</h4><ul>' +
-      [["about.html", "О компании"], ["team.html", "Наши сотрудники"], ["certificates.html", "Сертификаты"], ["vacancy.html", "Вакансии"], ["cooperation.html", "Сотрудничество"], ["delivery.html", "Доставка и сборка"], ["payment.html", "Оплата и рассрочка"], ["services.html", "Услуги"], ["guarantees.html", "Гарантии"], ["index.html#works", "Наши работы"]].map(function (l) { return '<li><a href="' + l[0] + '">' + l[1] + "</a></li>"; }).join("") + "</ul></div>" +
+      [["about.html", "О компании"], ["team.html", "Наши сотрудники"], ["certificates.html", "Сертификаты"], ["vacancy.html", "Вакансии"], ["cooperation.html", "Сотрудничество"], ["delivery.html", "Доставка и сборка"], ["payment.html", "Оплата и рассрочка"], ["services.html", "Услуги"], ["guarantees.html", "Гарантии"], ["works.html", "Наши работы"], ["promotions.html", "Акции"], ["reviews.html", "Отзывы"]].map(function (l) { return '<li><a href="' + l[0] + '">' + l[1] + "</a></li>"; }).join("") + "</ul></div>" +
       '<div><h4>Контакты</h4><ul><li><a href="tel:' + T1 + '">' + PH1 + '</a></li><li><a href="tel:' + T2 + '">' + PH2 + '</a></li><li><a href="mailto:' + MAIL + '">' + MAIL + '</a></li>' +
       '<li>ул. Чернышевского, 98, офис 320</li><li>ул. Авиаторов, 5, ТК «Авиатор», этаж 1</li>' +
       '<li><a href="' + TG + '" rel="noopener">Telegram</a> · <a href="https://max.ru/join/RbMRE7QV8gGf_kgVmmKJ-XLSDBFNG09-RkxAK9O_B60" rel="noopener">Max</a> · <a href="https://vk.ru/club236534824" rel="noopener">VK</a> · <a href="https://ok.ru/profile/577897253028" rel="noopener">OK</a></li></ul></div>' +
@@ -218,12 +218,19 @@
       }
       return;
     }
-    root.innerHTML = '<div class="toolbar"><div><label for="q">Поиск по названию</label><input id="q" type="search" placeholder="Например, Яхта"></div><div><label for="sort">Сортировка</label><select id="sort"><option value="price-asc">Сначала дешевле</option><option value="price-desc">Сначала дороже</option><option value="name">По названию</option></select></div></div>' +
+    root.innerHTML = '<div class="toolbar"><div><label for="q">Поиск по названию</label><input id="q" type="search" placeholder="Например, Яхта"></div><div><label for="sort">Сортировка</label><select id="sort"><option value="price-asc">Сначала дешевле</option><option value="price-desc">Сначала дороже</option><option value="name">По названию</option></select></div><div><label for="price-filter">Фильтр по цене</label><select id="price-filter"><option value="all">Любая цена</option><option value="under50">До 50 000 ₽</option><option value="50to100">50 000–100 000 ₽</option><option value="over100">От 100 000 ₽</option><option value="quote">Цена по запросу</option></select></div></div>' +
       '<p class="muted" id="count"></p><div class="grid" id="grid"></div>' +
-      '<p class="note" style="margin-top:28px">Подкатегории на исходном сайте: <a href="https://slm24.ru/shkafyi-kupe-recessed/" rel="noopener">встраиваемые</a>, <a href="https://slm24.ru/shkafyi-kupe-square/" rel="noopener">прямые</a>, <a href="https://slm24.ru/shkafyi-kupe-angle/" rel="noopener">угловые</a>. Фильтры по форме, монтажу и материалу дверей появятся, когда у каждого товара будут эти данные.</p>';
+      '<p class="note" style="margin-top:28px">Поиск работает по названиям, сортировка — по цене и алфавиту. Фильтры по материалам и размерам не добавлены: для всех 137 карточек такие структурированные характеристики не подтверждены.</p>';
     function draw() {
-      var q = $("#q").value.trim().toLowerCase(), s = $("#sort").value;
-      var list = items.filter(function (p) { return p.name.toLowerCase().indexOf(q) > -1; });
+      var q = $("#q").value.trim().toLowerCase(), s = $("#sort").value, pf = $("#price-filter").value;
+      var list = items.filter(function (p) {
+        var price = Number(p.price) || 0;
+        var matchName = p.name.toLowerCase().indexOf(q) > -1;
+        var matchPrice = pf === "all" || (pf === "under50" && price > 0 && price < 50000) ||
+          (pf === "50to100" && price >= 50000 && price <= 100000) ||
+          (pf === "over100" && price > 100000) || (pf === "quote" && price === 0);
+        return matchName && matchPrice;
+      });
       list.sort(function (a, b) {
         if (s === "name") return a.name.localeCompare(b.name, "ru");
         var ap = Number(a.price) || 0, bp = Number(b.price) || 0;
@@ -234,7 +241,7 @@
       $("#count").textContent = "Найдено: " + list.length + " из " + items.length;
       $("#grid").innerHTML = list.length ? list.map(prodCard).join("") : "<p>Ничего не найдено. Попробуйте другое название.</p>";
     }
-    $("#q").addEventListener("input", draw); $("#sort").addEventListener("change", draw); draw();
+    $("#q").addEventListener("input", draw); $("#sort").addEventListener("change", draw); $("#price-filter").addEventListener("change", draw); draw();
   }
   function initProduct() {
     var idParam = new URLSearchParams(location.search).get("id");
@@ -268,12 +275,24 @@
       $("#rel").innerHTML = rel.map(prodCard).join("");
     }
   }
+  function initWorks() {
+    var root = $("#works-list");
+    var opts = C.map(function (c) { return '<option value="' + c.slug + '">' + esc(c.name) + '</option>'; }).join("");
+    root.innerHTML = '<div class="toolbar"><div><label for="works-q">Поиск мебели</label><input id="works-q" type="search" placeholder="Например, кухня или шкаф"></div><div><label for="works-cat">Категория</label><select id="works-cat"><option value="all">Все категории</option>' + opts + '</select></div></div><p class="muted" id="works-count"></p><div class="grid" id="works-grid-page"></div>';
+    function draw() {
+      var q = $("#works-q").value.trim().toLowerCase(), cat = $("#works-cat").value;
+      var list = P.filter(function (p) { return (!q || p.name.toLowerCase().indexOf(q) !== -1) && (cat === "all" || p.cat === cat); });
+      $("#works-count").textContent = "Показано " + list.length + " примеров из " + P.length + " товаров каталога";
+      $("#works-grid-page").innerHTML = list.length ? list.map(prodCard).join("") : '<div class="empty">По этому запросу ничего не найдено.</div>';
+    }
+    $("#works-q").addEventListener("input", draw); $("#works-cat").addEventListener("change", draw); draw();
+  }
   function initReviews() { $("#rev-list").innerHTML = R.map(function (r) { return revCard(r, true); }).join(""); }
   function initContacts() { var f = $("#c-form"); if (f) bindForm(f, "Вопрос с сайта"); }
 
   chrome();
-  ({ home: initHome, catalog: initCatalog, category: initCategory, product: initProduct, reviews: initReviews, contacts: initContacts }[page] || function () {})();
-  var cur = { reviews: "reviews.html", contacts: "contacts.html" }[page];
+  ({ home: initHome, catalog: initCatalog, category: initCategory, product: initProduct, works: initWorks, reviews: initReviews, contacts: initContacts }[page] || function () {})();
+  var cur = { works: "works.html", reviews: "reviews.html", contacts: "contacts.html" }[page];
   sweepImages();
   if (cur) $$('.nav a[href="' + cur + '"]').forEach(function (a) { a.setAttribute("aria-current", "page"); });
 })();
