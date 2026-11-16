@@ -165,7 +165,7 @@
   function initHome() {
     $("#home-cats").innerHTML = C.map(catCard).join("");
     var works = [
-      ["images/cats/kuhni.jpg", "Кухня"], ["images/cats/shkafy-kupe.jpg", "Шкаф-купе"], ["images/cats/detskie.jpg", "Детская"], ["images/cats/gorka.jpg", "Горка"]
+      ["images/cats/kuhni-klassika.jpg", "Кухня"], ["images/cats/shkafyi-kupe.jpg", "Шкаф-купе"], ["images/cats/detskie.jpg", "Детская"], ["images/cats/gorkastenka.jpg", "Горка"]
     ].map(function (w) { return { src: w[0], alt: w[1], always: true }; });
     P.slice(0, 11).forEach(function (p) { works.push({ src: p.img, alt: p.name }); });
     function drawWorks(list) {
