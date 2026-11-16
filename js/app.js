@@ -10,6 +10,7 @@
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
   var esc = function (s) { return String(s).replace(/[&<>"']/g, function (c) { return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); };
   var money = function (n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, "\u00a0") + "\u00a0₽"; };
+  var plainText = function (s) { return String(s || "").replace(/<br\\s*\\/?\\s*>/gi, " ").replace(/<\\/p\\s*>/gi, " ").replace(/<[^>]*>/g, " ").replace(/&nbsp;/gi, " ").replace(/&amp;/gi, "&").replace(/&quot;/gi, '"').replace(/&#39;/g, "'").replace(/\\s+/g, " ").trim(); };
   var page = document.body.getAttribute("data-page");
   var catBySlug = {}; C.forEach(function (c) { catBySlug[c.slug] = c; });
 
@@ -251,7 +252,7 @@
     $("#prod-crumbs").innerHTML = crumbs([["Главная", "index.html"], ["Каталог", "catalog.html"], [c ? c.name : "Каталог", c ? "category.html?c=" + c.slug : "catalog.html"], [p.name]]);
     root.innerHTML = '<div class="prod"><button class="prod-img" type="button" data-lb="' + esc(p.img) + '" data-alt="' + esc(p.name) + '" aria-label="Открыть фото крупно">' + imgTag(p.img, p.name, p.name, false) + "</button>" +
       '<div class="prod-info"><h1 style="font-size:clamp(1.8rem,4.5vw,2.8rem)">' + esc(p.name) + '</h1><span class="price">' + priceText + "</span>" +
-      (p.desc ? "<p>" + esc(p.desc) + "</p>" : '<p class="muted">Описание товара уточняйте у производителя.</p>') +
+      (p.desc ? "<p>" + esc(plainText(p.desc)) + "</p>" : '<p class="muted">Описание товара уточняйте у производителя.</p>') +
       '<p class="muted">Полные характеристики и актуальную стоимость можно уточнить у производителя.</p>' +
       '<div class="btn-row"><button class="btn" type="button" data-callback>Заказать звонок</button><a class="btn btn--ghost" href="tel:' + T1 + '">' + PH1 + '</a></div>' +
       '<ul class="specs">' + (c ? '<li>Раздел: <a href="category.html?c=' + c.slug + '">' + esc(c.name) + '</a></li>' : '') +
