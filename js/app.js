@@ -199,7 +199,7 @@
     $("#cat-crumbs").innerHTML = crumbs([["Главная", "index.html"], ["Каталог", "catalog.html"], [c.name]]);
     var items = P.filter(function (p) { return p.cat === c.slug; });
     if (!items.length) {
-      root.innerHTML = '<div class="empty"><h2>Фотографии и цены этого раздела — на исходном сайте</h2><p>В демо-концепции показаны только те товары, которые удалось получить с исходного сайта. Для раздела «' + esc(c.name) + '» их пока нет — ничего не придумано.</p><div class="btn-row"><a class="btn" href="' + c.url + '" rel="noopener">Открыть раздел на slm24.ru</a><button class="btn btn--ghost" type="button" data-callback>Заказать звонок</button></div></div>';
+      root.innerHTML = '<div class="empty"><h2>Товары этого раздела пока не добавлены в демо-каталог</h2><p>В демо-каталоге пока нет проверенных карточек для раздела «' + esc(c.name) + '». Посмотрите полный ассортимент на исходном сайте.</p><div class="btn-row"><a class="btn" href="' + c.url + '" rel="noopener">Открыть раздел на slm24.ru</a><button class="btn btn--ghost" type="button" data-callback>Заказать звонок</button></div></div>';
       return;
     }
     root.innerHTML = '<div class="toolbar"><div><label for="q">Поиск по названию</label><input id="q" type="search" placeholder="Например, Яхта"></div><div><label for="sort">Сортировка</label><select id="sort"><option value="price-asc">Сначала дешевле</option><option value="price-desc">Сначала дороже</option><option value="name">По названию</option></select></div></div>' +
