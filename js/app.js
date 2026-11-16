@@ -55,7 +55,7 @@
 
   /* ---------- изображения с запасным вариантом ---------- */
   function imgTag(src, alt, label, lazy) {
-    return '<img src="' + esc(src) + '" alt="' + esc(alt) + '"' + (lazy === false ? "" : ' loading="lazy"') + ' data-fb="' + esc(label || alt) + '">';
+    return '<img src="' + esc(src) + '" alt="' + esc(alt) + '" decoding="async"' + (lazy === false ? ' fetchpriority="high"' : ' loading="lazy"') + ' data-fb="' + esc(label || alt) + '">';
   }
   function onImgError(t) {
     if (t.tagName !== "IMG" || !t.hasAttribute("data-fb") || !t.parentNode) return;
@@ -149,7 +149,7 @@
   /* ---------- блоки ---------- */
   function catCard(c) {
     var t = '<span class="cat-t">' + esc(c.name) + "</span>";
-    return '<a class="cat" href="category.html?c=' + c.slug + '">' + imgTag(c.img, c.name, c.name, false).replace("<img ", "<img data-cat-fb ") + t + "</a>";
+    return '<a class="cat" href="category.html?c=' + c.slug + '">' + imgTag(c.img, c.name, c.name, true).replace("<img ", "<img data-cat-fb ") + t + "</a>";
   }
   function prodCard(p) {
     var priceText = Number(p.price) > 0 ? "от " + money(p.price) : "Цена по запросу";
