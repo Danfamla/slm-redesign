@@ -10,7 +10,7 @@
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
   var esc = function (s) { return String(s).replace(/[&<>"']/g, function (c) { return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); };
   var money = function (n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, "\u00a0") + "\u00a0₽"; };
-  var plainText = function (s) { return String(s || "").replace(/<br\\s*\\/?\\s*>/gi, " ").replace(/<\\/p\\s*>/gi, " ").replace(/<[^>]*>/g, " ").replace(/&nbsp;/gi, " ").replace(/&amp;/gi, "&").replace(/&quot;/gi, '"').replace(/&#39;/g, "'").replace(/\\s+/g, " ").trim(); };
+  var plainText = function (s) { return String(s || "").replace(/<br\s*\/?\s*>/gi, " ").replace(/<\/p\s*>/gi, " ").replace(/<[^>]*>/g, " ").replace(/&nbsp;/gi, " ").replace(/&amp;/gi, "&").replace(/&quot;/gi, '"').replace(/&#39;/g, "'").replace(/\s+/g, " ").trim(); };
   var page = document.body.getAttribute("data-page");
   var catBySlug = {}; C.forEach(function (c) { catBySlug[c.slug] = c; });
 
