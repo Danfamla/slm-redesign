@@ -225,3 +225,77 @@ dialog::backdrop{background:rgba(30,28,26,.6)}
 /* баннер сайта (images/banners/banner_main.webp появляется после запуска tools/fetch_images.py) */
 .banner{padding-bottom:clamp(32px,5vw,56px)}
 .banner img{width:100%;border-radius:var(--r);background:var(--sand)}
+
+/* ---------- адаптивная оптимизация: desktop, tablet, mobile ---------- */
+html { scroll-behavior: smooth; }
+body { min-width: 320px; overflow-x: clip; }
+img { height: auto; }
+button, input, textarea, select { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+.btn, .chip, .nav a, .nav button { touch-action: manipulation; }
+
+@media (min-width: 1200px) {
+  .wrap { max-width: 1280px; }
+  .head-in { gap: 14px; }
+  .nav { gap: 0; }
+  .nav > a, .nav .dd > button { padding-inline: 9px; font-size: .9rem; }
+  .head-tel { font-size: .9rem; }
+}
+
+@media (min-width: 1000px) and (max-width: 1199px) {
+  .head-in { gap: 10px; }
+  .logo img { height: 34px; }
+  .nav > a, .nav .dd > button { padding-inline: 7px; font-size: .86rem; }
+  .head-tel { font-size: .82rem; }
+}
+
+@media (max-width: 759px) {
+  .sec { padding-block: 44px; }
+  .hero { padding-top: 26px; }
+  .hero-in { gap: 24px; }
+  .hero .lead { margin-block: 16px 22px; }
+  .facts li { padding: 16px 12px; font-size: .88rem; }
+  .facts b { font-size: 1.35rem; }
+  .sec-head { align-items: start; }
+  .rev { padding: 19px; }
+  .c-card { padding: 20px; }
+  .prod { gap: 20px; }
+  .prod-img { aspect-ratio: 4 / 4.2; }
+  .btn-row > .btn { flex: 1 1 190px; }
+  .form .btn { width: 100%; }
+  .foot { padding-bottom: 24px; }
+  .foot-bottom { margin-bottom: 8px; }
+}
+
+@media (min-width: 420px) and (max-width: 559px) {
+  .cat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .cat { aspect-ratio: 1 / 1.12; }
+  .cat-t { left: 12px; right: 12px; bottom: 12px; font-size: 1.08rem; }
+}
+
+@media (max-width: 419px) {
+  :root { --pad: 16px; }
+  h1 { font-size: clamp(2rem, 10vw, 2.7rem); }
+  .hero-photos { gap: 8px; }
+  .facts li { padding: 14px 9px; font-size: .82rem; }
+  .facts b { font-size: 1.22rem; }
+  .grid { gap: 10px; }
+  .card .tx { padding: 11px 10px 13px; }
+  .card h3 { font-size: .94rem; }
+  .price { font-size: .86rem; }
+  .mbar { gap: 6px; }
+  .mbar .btn { font-size: .84rem; padding-inline: .55em; }
+  .btn-row { gap: 8px; }
+  .btn-row > .btn { flex-basis: 100%; width: 100%; }
+}
+
+@media (hover: none) {
+  .cat:hover img { transform: none; }
+  .card:hover { box-shadow: none; }
+}
+
+@media print {
+  .site-head, .ribbon, .mbar, .foot { display: none !important; }
+  body { padding: 0; background: #fff; }
+  .sec { padding-block: 20px; }
+}
