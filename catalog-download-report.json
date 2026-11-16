@@ -1,0 +1,20 @@
+{
+  "categories": {
+    "kuhni-klassika": 29,
+    "shkafyi-kupe": 22,
+    "detskie": 23,
+    "gorkastenka": 13,
+    "mebel-iz-massiva": 16,
+    "garderobnyie": 5,
+    "mezhkomnatnyie-peregorodki": 2,
+    "mebel-dlya-vannoj-komnatyi": 6,
+    "prihozhie": 8,
+    "mebel-dlya-spalnoj-komnatyi": 7,
+    "ofisnaya-mebel": 6
+  },
+  "products_found": 137,
+  "images_downloaded_or_present": 137,
+  "new_products_added": 115,
+  "errors": [],
+  "note": "Цены, не найденные на странице товара, записаны как 0; проверьте их вручную. Скрипт не выдумывает цены."
+}
