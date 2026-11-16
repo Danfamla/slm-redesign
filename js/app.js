@@ -24,19 +24,22 @@
       '<a class="logo" href="index.html" aria-label="СЛМ — Самая Лучшая Мебель, на главную"><img src="images/brand/logo.png" alt="СЛМ — самая лучшая мебель" width="190" height="38"></a>' +
       '<nav class="nav" aria-label="Основная навигация">' +
       '<div class="dd"><button type="button" aria-haspopup="true">Каталог</button><div class="dd-menu">' + catLinks() + '<a href="catalog.html"><b>Весь каталог</b></a></div></div>' +
-      '<a href="index.html#works">Работы</a><a href="reviews.html">Отзывы</a><a href="index.html#promo">Акции</a><a href="index.html#about">О компании</a><a href="contacts.html">Контакты</a></nav>' +
+      '<a href="index.html#works">Работы</a><a href="reviews.html">Отзывы</a><a href="index.html#promo">Акции</a><div class="dd"><button type="button" aria-haspopup="true">О компании</button><div class="dd-menu">' +
+      [['about.html','О компании'],['team.html','Наши сотрудники'],['certificates.html','Сертификаты'],['vacancy.html','Вакансии'],['cooperation.html','Сотрудничество'],['delivery.html','Доставка и сборка'],['payment.html','Оплата и рассрочка'],['services.html','Услуги'],['guarantees.html','Гарантии']].map(function(l){return '<a href="'+l[0]+'">'+l[1]+'</a>';}).join('') +
+      '</div></div><a href="contacts.html">Контакты</a></nav>' +
       '<a class="head-tel" href="tel:' + T1 + '">' + PH1 + "</a>" +
       '<button class="burger" type="button" aria-label="Открыть меню" aria-expanded="false"><span></span></button>' +
       "</div></header>" +
       '<div class="drawer" id="drawer"><a href="catalog.html">Каталог</a><div class="sub">' + catLinks() + "</div>" +
-      '<h4>Разделы</h4><a href="index.html#works">Работы</a><a href="reviews.html">Отзывы</a><a href="index.html#promo">Акции</a><a href="index.html#about">О компании</a><a href="contacts.html">Контакты</a>' +
+      '<h4>Разделы</h4><a href="index.html#works">Работы</a><a href="reviews.html">Отзывы</a><a href="index.html#promo">Акции</a><a href="contacts.html">Контакты</a><h4>О компании</h4>' +
+      [['about.html','О компании'],['team.html','Наши сотрудники'],['certificates.html','Сертификаты'],['vacancy.html','Вакансии'],['cooperation.html','Сотрудничество'],['delivery.html','Доставка и сборка'],['payment.html','Оплата и рассрочка'],['services.html','Услуги'],['guarantees.html','Гарантии']].map(function(l){return '<a href="'+l[0]+'">'+l[1]+'</a>';}).join('') +
       '<a href="tel:' + T1 + '">' + PH1 + '</a><a href="tel:' + T2 + '">' + PH2 + '</a>' +
       '<button class="btn" type="button" data-quiz>Узнать стоимость кухни</button></div>';
     var foot = '<footer class="foot"><div class="wrap"><div class="foot-grid">' +
       '<div><span class="logo-f"><img src="images/brand/logo.png" alt="СЛМ" width="160" height="34"></span><p>Мебель на заказ в Красноярске по индивидуальным размерам от производителя.</p></div>' +
       "<div><h4>Каталог</h4><ul>" + C.slice(0, 6).map(function (c) { return '<li><a href="category.html?c=' + c.slug + '">' + esc(c.menu) + "</a></li>"; }).join("") + '<li><a href="catalog.html">Все категории</a></li></ul></div>' +
       '<div><h4>Ещё на slm24.ru</h4><ul>' +
-      [["about/", "О компании"], ["dostavka_i_sborka/", "Доставка и сборка"], ["oplata_i_rassrochka/", "Оплата и рассрочка"], ["garanty/", "Гарантии"], ["certs/", "Сертификаты"], ["design_projects/", "Наши работы"], ["for_design/", "Сотрудничество"]].map(function (l) { return '<li><a href="https://slm24.ru/' + l[0] + '" rel="noopener">' + l[1] + "</a></li>"; }).join("") + "</ul></div>" +
+      [["about.html", "О компании"], ["team.html", "Наши сотрудники"], ["certificates.html", "Сертификаты"], ["vacancy.html", "Вакансии"], ["cooperation.html", "Сотрудничество"], ["delivery.html", "Доставка и сборка"], ["payment.html", "Оплата и рассрочка"], ["services.html", "Услуги"], ["guarantees.html", "Гарантии"], ["index.html#works", "Наши работы"]].map(function (l) { return '<li><a href="'' + l[0] + '" rel="noopener">' + l[1] + "</a></li>"; }).join("") + "</ul></div>" +
       '<div><h4>Контакты</h4><ul><li><a href="tel:' + T1 + '">' + PH1 + '</a></li><li><a href="tel:' + T2 + '">' + PH2 + '</a></li><li><a href="mailto:' + MAIL + '">' + MAIL + '</a></li>' +
       '<li>ул. Чернышевского, 98, офис 320</li><li>ул. Авиаторов, 5, ТК «Авиатор», этаж 1</li>' +
       '<li><a href="' + TG + '" rel="noopener">Telegram</a> · <a href="https://max.ru/join/RbMRE7QV8gGf_kgVmmKJ-XLSDBFNG09-RkxAK9O_B60" rel="noopener">Max</a> · <a href="https://vk.ru/club236534824" rel="noopener">VK</a> · <a href="https://ok.ru/profile/577897253028" rel="noopener">OK</a></li></ul></div>' +
