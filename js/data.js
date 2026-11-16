@@ -289,7 +289,52 @@ window.SLM={
    "img": "images/products/cp-327.jpg",
    "url": "https://slm24.ru/product/cp/327/"
   }
- ],
+ ,
+  {
+   "id": 63,
+   "cat": "kuhni-klassika",
+   "name": "Кухня «Легкость»",
+   "price": 94750,
+   "desc": "Угловая кухня по индивидуальному проекту. Фасады МДФ белый глянец, столешница из влагостойкой ДСП с ударопрочным пластиком, фартук из пластика в цвет столешницы.",
+   "img": "https://slm24.ru/media/products_images/%D0%9A%D1%83%D1%85%D0%BD%D1%8F_zjUInvd.jpg",
+   "url": "https://slm24.ru/product/kk/63/"
+  },
+  {
+   "id": 123,
+   "cat": "kuhni-klassika",
+   "name": "Кухня «Звездное небо»",
+   "price": 99800,
+   "desc": "Угловая кухня с фасадами МДФ глянец, столешницей из влагостойкой ДСП и комбинированным фартуком.",
+   "img": "https://slm24.ru/media/products_images/%D0%9A%D1%83%D1%85%D0%BD%D1%8F_YoSKGC1.jpg",
+   "url": "https://slm24.ru/product/kk/123/"
+  },
+  {
+   "id": 289,
+   "cat": "kuhni-klassika",
+   "name": "Кухня «Уют»",
+   "price": 100000,
+   "desc": "Индивидуальное производство: белый корпус ЛДСП, матовые фасады МДФ с интегрированной ручкой, столешница и фартук под дуб вотан.",
+   "img": "https://slm24.ru/media/products_images/Meb-0016__%D0%BA%D0%BE%D0%BF%D0%B8%D1%8F.jpg",
+   "url": "https://slm24.ru/product/kk/289/"
+  },
+  {
+   "id": 42,
+   "cat": "kuhni-klassika",
+   "name": "Кухня «Фиалка» с барной стойкой",
+   "price": 119750,
+   "desc": "Угловая кухня с глянцевыми пластиковыми фасадами, барной стойкой, влагостойкой столешницей и фурнитурой с доводчиками.",
+   "img": "https://slm24.ru/media/products_images/%D0%92%D1%8B%D1%81%D1%82%D0%B0%D0%B2%D0%BE%D1%87%D0%BD%D1%8B%D0%B9_%D0%B7%D0%B0%D0%BB_1_1ZLx1hT.jpg",
+   "url": "https://slm24.ru/product/kk/42/"
+  },
+  {
+   "id": 45,
+   "cat": "kuhni-klassika",
+   "name": "Кухня «Бьянко»",
+   "price": 119900,
+   "desc": "Угловая кухня 4120×822×2180 мм. Корпус ЛДСП Эггер, фасады крашеный МДФ, столешница с ударопрочным пластиком, фурнитура Blum с доводчиками.",
+   "img": "https://slm24.ru/media/products_images/%D0%9A%D1%83%D1%85%D0%BD%D1%8F_111_uFrAZST.jpg",
+   "url": "https://slm24.ru/product/kk/45/"
+  } ],
  "reviews": [
   {
    "name": "Галина",
