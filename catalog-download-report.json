@@ -18,9 +18,9 @@
   "errors": [],
   "note": "All product IDs are compared numerically so links like product.html?id=63 resolve correctly. Prices that were generic 3,000 ₽ placeholders and could not be verified are shown as \"Цена по запросу\".",
   "price_review": {
-    "kitchens": "29 prices updated from the original category page",
-    "unverified_placeholder_prices": 86,
-    "display_rule": "Unverified prices are displayed as \"Цена по запросу\", not as an invented 3,000 ₽"
+    "kitchens": "29 products; user confirmed this count is correct.",
+    "unverified_placeholder_prices": 3,
+    "display_rule": "The 3 products with a source price of 0 are displayed as \"Цена по запросу\"; no placeholder price is invented."
   },
   "price_sync": {
     "source": "https://slm24.ru/",
@@ -28,19 +28,19 @@
       "kuhni-klassika",
       "shkafyi-kupe",
       "detskie",
-      "mebel-iz-massiva",
-      "mebel-dlya-vannoj-komnatyi",
-      "mebel-dlya-spalnoj-komnatyi",
-      "ofisnaya-mebel"
-    ],
-    "products_with_source_prices": 109,
-    "source_zero_price_products": 3,
-    "categories_still_needing_verification": [
       "gorkastenka",
+      "mebel-iz-massiva",
       "garderobnyie",
       "mezhkomnatnyie-peregorodki",
-      "prihozhie"
+      "prihozhie",
+      "ofisnaya-mebel"
     ],
-    "note": "Prices were copied from category pages on slm24.ru where the matching product and price were visible. Zero-price entries on the source remain displayed as Цена по запросу. Four categories could not be reliably price-verified from accessible source content and were not guessed."
+    "products_with_source_prices": 121,
+    "source_zero_price_products": 3,
+    "categories_still_needing_verification": [
+      "mebel-dlya-vannoj-komnatyi",
+      "mebel-dlya-spalnoj-komnatyi"
+    ],
+    "note": "Prices were transcribed from the supplied slm24.ru category screenshots for garderobnyie, mezhkomnatnyie-peregorodki and prihozhie; gorkastenka prices were retained from the previous verified update. Of the 124 products in verified categories, 121 have a numeric source price and 3 have a source price of 0 and remain \"Цена по запросу\". The 10 products in the two categories still needing verification are not included in this verified-category count."
   }
 }
